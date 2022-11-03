@@ -3,4 +3,13 @@
  * and connect to your database using sequelize.
  */
 
+const { Sequelize } = require('sequelize');
+const path = require('path');
 
+const db = new Sequelize({
+  dialect: 'sqlite',
+  storage: path.join(__dirname, 'cheeseBoard.sqlite'),
+  logging: false
+});
+
+module.exports = db;
