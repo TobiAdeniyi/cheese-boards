@@ -19,15 +19,28 @@ Cheese.init(
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
-      unique: true
+      unique: true,
+      validate: {
+        isInt: true,
+        notNull: true,
+        notEmpty: true
+      }
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isAlphanumeric: true,
+        notNull: true,
+        notEmpty: true
+      }
     },
     description: {
       type: DataTypes.STRING,
       allowNull: true,
+      validate: {
+        isAlphanumeric: true
+      }
     }
   },
   { sequelize: db }

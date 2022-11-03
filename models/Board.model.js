@@ -20,20 +20,38 @@ Board.init(
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
-      unique: true
+      unique: true,
+      validate: {
+        isInt: true,
+        notNull: true,
+        notEmpty: true
+      }
     },
     type: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isAlpha: true,
+        notNull: true,
+        notEmpty: true
+      }
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
+      validate: {
+        isAlphanumeric: true
+      }
     },
     rating: {
       type: DataTypes.REAL,
       allowNull: false,
-      defaultValue: 0
+      defaultValue: 0,
+      validate: {
+        min: 0,
+        max: 100,
+        isNumeric: true,
+      }
     }
   },
   { sequelize: db }
