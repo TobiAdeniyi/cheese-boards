@@ -30,8 +30,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        is: /^[a-z]+$/i,
-        isAlpha: true,
+        is: /[\w\s]+/i,
         notNull: true,
         notEmpty: true
       }

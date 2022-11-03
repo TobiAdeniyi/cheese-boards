@@ -30,7 +30,7 @@ Cheese.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isAlphanumeric: true,
+        is: /[\w\s]+/i,
         notNull: true,
         notEmpty: true
       }
@@ -39,7 +39,7 @@ Cheese.init(
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
-        isAlphanumeric: true
+        is: /[\w\s]+/i
       }
     }
   },

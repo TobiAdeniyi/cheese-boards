@@ -31,7 +31,7 @@ Board.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isAlpha: true,
+        is: /[\w\s]+/i,
         notNull: true,
         notEmpty: true
       }
@@ -40,7 +40,7 @@ Board.init(
       type: DataTypes.TEXT,
       allowNull: true,
       validate: {
-        isAlphanumeric: true
+        is: /[\w\s]+/i
       }
     },
     rating: {
