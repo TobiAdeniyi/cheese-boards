@@ -1,4 +1,4 @@
-const { User, Cheese, Board } = require("../models");
+const { User, Cheese, Board, UsersBoards, BoardsOwners } = require("../models");
 const db = require("./db");
 
 const seed = async _ => {
@@ -9,7 +9,24 @@ const seed = async _ => {
     [
       {
         name: "Bobby Robort",
-        email: "boBBR@google.com"
+        email: "boBBR@google.com",
+        usersBoards: [
+          {
+            type: 'Aged',
+            description: "Aged: Gouda, Sharp Cheddar, Gruyere.",
+            rating: 0
+          },
+          {
+            type: "Soft and creamy",
+            description: "Soft and creamy: Brie, Camembert, Epoisses, Burrata, Fresh Buffalo Mozzarella.",
+            rating: 0
+          },
+          {
+            type: "Crumbly",
+            description: "Crumbly: Goat and Feta Cheese.",
+            rating: 0
+          }
+        ]
       },
       {
         name: "John Da Batptis",
@@ -28,7 +45,12 @@ const seed = async _ => {
         email: "xyz@google.com"
       }
     ],
-    { validate: true }
+    {
+      validate: true,
+      include: [
+        { association: UsersBoards, as: 'usersBoards' }
+      ]
+    }
   );
 
   // Bulk Create Cheese
